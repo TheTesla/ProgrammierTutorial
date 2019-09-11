@@ -43,9 +43,9 @@
 \frame{\titlepage}
 
 \section{Problem}
-\begin{frame}[fragile]
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
 \begin{multicols}{2}
-	\begin{tikzpicture}[thick,scale=0.8, every node/.style={transform shape}, node distance=2cm, minimum width=1cm]
+	\begin{tikzpicture}[thick,scale=1.2, every node/.style={transform shape}, node distance=2cm, minimum width=1cm]
 		\node[circle, draw=black, fill=blue] (start) {}; 
 		\node[circle, draw=black, fill=green, right=of start] (A) {A};
 		\node[circle, draw=black, fill=green, below=of start] (B) {B};
@@ -78,19 +78,19 @@
 \end{frame}
 
 \section{Problemanalyse}
-\begin{frame}[fragile]
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
 \begin{multicols}{2}
-	\begin{tikzpicture}[thick,scale=0.8, every node/.style={transform shape}]
+	\begin{tikzpicture}[thick,scale=0.6, every node/.style={transform shape}]
 	\node[se] (start) {Start};
 	%\node[op, below=of div] (set) {$a=b,\ b=r$};
 	\node[cn, below=of start] (condon) {Knopf gedrückt?};
-	\node[op, below=of condon] (cnt) {$cnt \leftarrow cnt + 1$};
-	\node[cn, below=of cnt] (condoff) {Knopf gedrückt?};
+	\node[op, below=of condon] (z) {$z \leftarrow z + 1$};
+	\node[cn, below=of z] (condoff) {Knopf gedrückt?};
 	
 	%
 	\draw[->] (start) -- (condon) coordinate[midway] (startedge)
-	(condon) -- node[left] {Ja} (cnt)
-	(cnt) -- (condoff) coordinate[midway] (condonedge);
+	(condon) -- node[left] {Ja} (z)
+	(z) -- (condoff) coordinate[midway] (condonedge);
 	\draw[->] (condon) -- node[below] {Nein} ++(2.5,0) |- (startedge);
 	\draw[->] (condoff) -- node[below] {Ja} ++(2.5,0) |- (condonedge);
 	\draw[->] (condoff) -- node[below] {Nein} ++(-2.5,0) |- (startedge);
@@ -98,28 +98,28 @@
 	\scalebox{0.7}{
 		\begin{wave}{2}{5}
 			\nextwave{Knopf} \bit{0}{1.0} \bit{1}{0.5} \bit{0}{0.5} \bit{1}{0.5} \bit{0}{0.5} \bit{1}{0.7} \bit{0}{.8} \bit{1}{1.7}
-			\nextwave{cnt}  \known{0}{1.2} \known{1}{1} \known{2}{1} \known{3}{1.5} \known{4}{1.5}
+			\nextwave{$z$}  \known{0}{1.2} \known{1}{1} \known{2}{1} \known{3}{1.5} \known{4}{1.5}
 		\end{wave}
 	}
 	\begin{itemize}
-		\item zählt Tastdrücke
+		\item zählt Tastdrücke: $z$
 	\end{itemize}
 \end{multicols}
 \end{frame}
 
 
-\begin{frame}[fragile]
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
 \begin{multicols}{2}
-	\begin{tikzpicture}[thick,scale=0.8, every node/.style={transform shape}]
+	\begin{tikzpicture}[thick,scale=0.6, every node/.style={transform shape}]
 	\node[se] (start) {Start};
 	%\node[op, below=of div] (set) {$a=b,\ b=r$};
 	\node[cn, below=of start] (condon) {Knopf gedrückt?};
-	\node[op, below=of condon] (cnt) {$cnt \leftarrow cnt + 1$};
-	\node[cn, below=of cnt] (condoff) {Knopf gedrückt?};
+	\node[op, below=of condon] (z) {$z \leftarrow z + 1$};
+	\node[cn, below=of z] (condoff) {Knopf gedrückt?};
 		%
 	\draw[red,->] (start) -- (condon) coordinate[midway] (startedge);
-	\draw[->] (condon) -- node[left] {Ja} (cnt);
-	\draw[->] (cnt) -- (condoff) coordinate[midway] (condonedge);
+	\draw[->] (condon) -- node[left] {Ja} (z);
+	\draw[->] (z) -- (condoff) coordinate[midway] (condonedge);
 	\draw[->] (condon) -- node[below] {Nein} ++(2.5,0) |- (startedge);
 	\draw[->] (condoff) -- node[below] {Ja} ++(2.5,0) |- (condonedge);
 	\draw[->] (condoff) -- node[below] {Nein} ++(-2.5,0) |- (startedge);
@@ -127,7 +127,7 @@
 	\scalebox{0.7}{
 		\begin{wave}{2}{5}
 			\nextwave{Knopf} \bit{0}{1.0} \bit{1}{0.5} \bit{0}{0.5} \bit{1}{0.5} \bit{0}{0.5} \bit{1}{0.7} \bit{0}{.8} \bit{1}{1.7}
-			\nextwave{cnt}  \known{0}{1.2} \known{1}{1} \known{2}{1} \known{3}{1.5} \known{4}{1.5}
+			\nextwave{$z$}  \known{0}{1.2} \known{1}{1} \known{2}{1} \known{3}{1.5} \known{4}{1.5}
 			\nextwave{Zustand}  \ptr{0}{0} 
 		\end{wave}
 	}
@@ -137,18 +137,18 @@
 
 
 
-\begin{frame}[fragile]
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
 \begin{multicols}{2}
-	\begin{tikzpicture}[thick,scale=0.8, every node/.style={transform shape}]
+	\begin{tikzpicture}[thick,scale=0.6, every node/.style={transform shape}]
 	\node[se] (start) {Start};
 	%\node[op, below=of div] (set) {$a=b,\ b=r$};
 	\node[cn, below=of start] (condon) {Knopf gedrückt?};
-	\node[op, below=of condon] (cnt) {$cnt \leftarrow cnt + 1$};
-	\node[cn, below=of cnt] (condoff) {Knopf gedrückt?};
+	\node[op, below=of condon] (z) {$z \leftarrow z + 1$};
+	\node[cn, below=of z] (condoff) {Knopf gedrückt?};
 	%
 	\draw[->] (start) -- (condon) coordinate[midway] (startedge);
-	\draw[->] (condon) -- node[left] {Ja} (cnt);
-	\draw[->] (cnt) -- (condoff) coordinate[midway] (condonedge);
+	\draw[->] (condon) -- node[left] {Ja} (z);
+	\draw[->] (z) -- (condoff) coordinate[midway] (condonedge);
 	\draw[red,->] (condon) -- node[below] {Nein} ++(2.5,0) |- (startedge);
 	\draw[->] (condoff) -- node[below] {Ja} ++(2.5,0) |- (condonedge);
 	\draw[->] (condoff) -- node[below] {Nein} ++(-2.5,0) |- (startedge);
@@ -156,25 +156,25 @@
 	\scalebox{0.7}{
 		\begin{wave}{2}{5}
 			\nextwave{Knopf} \bitr{0}{1.0} \bit{1}{0.5} \bit{0}{0.5} \bit{1}{0.5} \bit{0}{0.5} \bit{1}{0.7} \bit{0}{.8} \bit{1}{1.7}
-			\nextwave{cnt}  \knownr{0}{1.2} \known{1}{1} \known{2}{1} \known{3}{1.5} \known{4}{1.5}
+			\nextwave{$z$}  \knownr{0}{1.2} \known{1}{1} \known{2}{1} \known{3}{1.5} \known{4}{1.5}
 			\nextwave{Zustand}  \ptr{0}{0.5} 
 		\end{wave}
 	}
 \end{multicols}
 \end{frame}
 
-\begin{frame}[fragile]
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
 \begin{multicols}{2}
-	\begin{tikzpicture}[thick,scale=0.8, every node/.style={transform shape}]
+	\begin{tikzpicture}[thick,scale=0.6, every node/.style={transform shape}]
 	\node[se] (start) {Start};
 	%\node[op, below=of div] (set) {$a=b,\ b=r$};
 	\node[cn, below=of start] (condon) {Knopf gedrückt?};
-	\node[op, below=of condon] (cnt) {$cnt \leftarrow cnt + 1$};
-	\node[cn, below=of cnt] (condoff) {Knopf gedrückt?};
+	\node[op, below=of condon] (z) {$z \leftarrow z + 1$};
+	\node[cn, below=of z] (condoff) {Knopf gedrückt?};
 	%
 	\draw[->] (start) -- (condon) coordinate[midway] (startedge);
-	\draw[red,->] (condon) -- node[left] {Ja} (cnt);
-	\draw[->] (cnt) -- (condoff) coordinate[midway] (condonedge);
+	\draw[red,->] (condon) -- node[left] {Ja} (z);
+	\draw[->] (z) -- (condoff) coordinate[midway] (condonedge);
 	\draw[->] (condon) -- node[below] {Nein} ++(2.5,0) |- (startedge);
 	\draw[->] (condoff) -- node[below] {Ja} ++(2.5,0) |- (condonedge);
 	\draw[->] (condoff) -- node[below] {Nein} ++(-2.5,0) |- (startedge);
@@ -182,7 +182,7 @@
 	\scalebox{0.7}{
 		\begin{wave}{2}{5}
 			\nextwave{Knopf} \bit{0}{1.0} \bitr{1}{0.5} \bit{0}{0.5} \bit{1}{0.5} \bit{0}{0.5} \bit{1}{0.7} \bit{0}{.8} \bit{1}{1.7}
-			\nextwave{cnt}  \knownr{0}{1.2} \known{1}{1} \known{2}{1} \known{3}{1.5} \known{4}{1.5}
+			\nextwave{$z$}  \knownr{0}{1.2} \known{1}{1} \known{2}{1} \known{3}{1.5} \known{4}{1.5}
 			\nextwave{Zustand}  \ptr{0}{1.0} 
 		\end{wave}
 	}
@@ -190,18 +190,18 @@
 \end{frame}
 
 
-\begin{frame}[fragile]
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
 \begin{multicols}{2}
-	\begin{tikzpicture}[thick,scale=0.8, every node/.style={transform shape}]
+	\begin{tikzpicture}[thick,scale=0.6, every node/.style={transform shape}]
 	\node[se] (start) {Start};
 	%\node[op, below=of div] (set) {$a=b,\ b=r$};
 	\node[cn, below=of start] (condon) {Knopf gedrückt?};
-	\node[op, below=of condon] (cnt) {$cnt \leftarrow cnt + 1$};
-	\node[cn, below=of cnt] (condoff) {Knopf gedrückt?};
+	\node[op, below=of condon] (z) {$z \leftarrow z + 1$};
+	\node[cn, below=of z] (condoff) {Knopf gedrückt?};
 	%
 	\draw[->] (start) -- (condon) coordinate[midway] (startedge);
-	\draw[->] (condon) -- node[left] {Ja} (cnt);
-	\draw[red,->] (cnt) -- (condoff) coordinate[midway] (condonedge);
+	\draw[->] (condon) -- node[left] {Ja} (z);
+	\draw[red,->] (z) -- (condoff) coordinate[midway] (condonedge);
 	\draw[->] (condon) -- node[below] {Nein} ++(2.5,0) |- (startedge);
 	\draw[->] (condoff) -- node[below] {Ja} ++(2.5,0) |- (condonedge);
 	\draw[->] (condoff) -- node[below] {Nein} ++(-2.5,0) |- (startedge);
@@ -209,25 +209,25 @@
 	\scalebox{0.7}{
 		\begin{wave}{2}{5}
 			\nextwave{Knopf} \bit{0}{1.0} \bitr{1}{0.5} \bit{0}{0.5} \bit{1}{0.5} \bit{0}{0.5} \bit{1}{0.7} \bit{0}{.8} \bit{1}{1.7}
-			\nextwave{cnt}  \known{0}{1.2} \knownr{1}{1} \known{2}{1} \known{3}{1.5} \known{4}{1.5}
+			\nextwave{$z$}  \known{0}{1.2} \knownr{1}{1} \known{2}{1} \known{3}{1.5} \known{4}{1.5}
 			\nextwave{Zustand}  \ptr{0}{1.2} 
 		\end{wave}
 	}
 \end{multicols}
 \end{frame}
 
-\begin{frame}[fragile]
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
 \begin{multicols}{2}
-	\begin{tikzpicture}[thick,scale=0.8, every node/.style={transform shape}]
+	\begin{tikzpicture}[thick,scale=0.6, every node/.style={transform shape}]
 	\node[se] (start) {Start};
 	%\node[op, below=of div] (set) {$a=b,\ b=r$};
 	\node[cn, below=of start] (condon) {Knopf gedrückt?};
-	\node[op, below=of condon] (cnt) {$cnt \leftarrow cnt + 1$};
-	\node[cn, below=of cnt] (condoff) {Knopf gedrückt?};
+	\node[op, below=of condon] (z) {$z \leftarrow z + 1$};
+	\node[cn, below=of z] (condoff) {Knopf gedrückt?};
 	%
 	\draw[->] (start) -- (condon) coordinate[midway] (startedge);
-	\draw[->] (condon) -- node[left] {Ja} (cnt);
-	\draw[->] (cnt) -- (condoff) coordinate[midway] (condonedge);
+	\draw[->] (condon) -- node[left] {Ja} (z);
+	\draw[->] (z) -- (condoff) coordinate[midway] (condonedge);
 	\draw[->] (condon) -- node[below] {Nein} ++(2.5,0) |- (startedge);
 	\draw[red,->] (condoff) -- node[below] {Ja} ++(2.5,0) |- (condonedge);
 	\draw[->] (condoff) -- node[below] {Nein} ++(-2.5,0) |- (startedge);
@@ -235,25 +235,25 @@
 	\scalebox{0.7}{
 		\begin{wave}{2}{5}
 			\nextwave{Knopf} \bit{0}{1.0} \bitr{1}{0.5} \bit{0}{0.5} \bit{1}{0.5} \bit{0}{0.5} \bit{1}{0.7} \bit{0}{.8} \bit{1}{1.7}
-			\nextwave{cnt}  \known{0}{1.2} \knownr{1}{1} \known{2}{1} \known{3}{1.5} \known{4}{1.5}
+			\nextwave{$z$}  \known{0}{1.2} \knownr{1}{1} \known{2}{1} \known{3}{1.5} \known{4}{1.5}
 			\nextwave{Zustand}  \ptr{0}{1.4} 
 		\end{wave}
 	}
 \end{multicols}
 \end{frame}
 
-\begin{frame}[fragile]
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
 \begin{multicols}{2}
-	\begin{tikzpicture}[thick,scale=0.8, every node/.style={transform shape}]
+	\begin{tikzpicture}[thick,scale=0.6, every node/.style={transform shape}]
 	\node[se] (start) {Start};
 	%\node[op, below=of div] (set) {$a=b,\ b=r$};
 	\node[cn, below=of start] (condon) {Knopf gedrückt?};
-	\node[op, below=of condon] (cnt) {$cnt \leftarrow cnt + 1$};
-	\node[cn, below=of cnt] (condoff) {Knopf gedrückt?};
+	\node[op, below=of condon] (z) {$z \leftarrow z + 1$};
+	\node[cn, below=of z] (condoff) {Knopf gedrückt?};
 	%
 	\draw[->] (start) -- (condon) coordinate[midway] (startedge);
-	\draw[->] (condon) -- node[left] {Ja} (cnt);
-	\draw[->] (cnt) -- (condoff) coordinate[midway] (condonedge);
+	\draw[->] (condon) -- node[left] {Ja} (z);
+	\draw[->] (z) -- (condoff) coordinate[midway] (condonedge);
 	\draw[->] (condon) -- node[below] {Nein} ++(2.5,0) |- (startedge);
 	\draw[->] (condoff) -- node[below] {Ja} ++(2.5,0) |- (condonedge);
 	\draw[red,->] (condoff) -- node[below] {Nein} ++(-2.5,0) |- (startedge);
@@ -261,25 +261,25 @@
 	\scalebox{0.7}{
 		\begin{wave}{2}{5}
 			\nextwave{Knopf} \bit{0}{1.0} \bit{1}{0.5} \bitr{0}{0.5} \bit{1}{0.5} \bit{0}{0.5} \bit{1}{0.7} \bit{0}{.8} \bit{1}{1.7}
-			\nextwave{cnt}  \known{0}{1.2} \knownr{1}{1} \known{2}{1} \known{3}{1.5} \known{4}{1.5}
+			\nextwave{$z$}  \known{0}{1.2} \knownr{1}{1} \known{2}{1} \known{3}{1.5} \known{4}{1.5}
 			\nextwave{Zustand}  \ptr{0}{1.5} 
 		\end{wave}
 	}
 \end{multicols}
 \end{frame}
 
-\begin{frame}[fragile]
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
 \begin{multicols}{2}
-	\begin{tikzpicture}[thick,scale=0.8, every node/.style={transform shape}]
+	\begin{tikzpicture}[thick,scale=0.6, every node/.style={transform shape}]
 	\node[se] (start) {Start};
 	%\node[op, below=of div] (set) {$a=b,\ b=r$};
 	\node[cn, below=of start] (condon) {Knopf gedrückt?};
-	\node[op, below=of condon] (cnt) {$cnt \leftarrow cnt + 1$};
-	\node[cn, below=of cnt] (condoff) {Knopf gedrückt?};
+	\node[op, below=of condon] (z) {$z \leftarrow z + 1$};
+	\node[cn, below=of z] (condoff) {Knopf gedrückt?};
 	%
 	\draw[->] (start) -- (condon) coordinate[midway] (startedge);
-	\draw[->] (condon) -- node[left] {Ja} (cnt);
-	\draw[->] (cnt) -- (condoff) coordinate[midway] (condonedge);
+	\draw[->] (condon) -- node[left] {Ja} (z);
+	\draw[->] (z) -- (condoff) coordinate[midway] (condonedge);
 	\draw[red,->] (condon) -- node[below] {Nein} ++(2.5,0) |- (startedge);
 	\draw[->] (condoff) -- node[below] {Ja} ++(2.5,0) |- (condonedge);
 	\draw[->] (condoff) -- node[below] {Nein} ++(-2.5,0) |- (startedge);
@@ -287,39 +287,39 @@
 	\scalebox{0.7}{
 		\begin{wave}{2}{5}
 			\nextwave{Knopf} \bit{0}{1.0} \bit{1}{0.5} \bitr{0}{0.5} \bit{1}{0.5} \bit{0}{0.5} \bit{1}{0.7} \bit{0}{.8} \bit{1}{1.7}
-			\nextwave{cnt}  \known{0}{1.2} \knownr{1}{1} \known{2}{1} \known{3}{1.5} \known{4}{1.5}
+			\nextwave{$z$}  \known{0}{1.2} \knownr{1}{1} \known{2}{1} \known{3}{1.5} \known{4}{1.5}
 			\nextwave{Zustand}  \ptr{0}{1.7} 
 		\end{wave}
 	}
 \end{multicols}
 \end{frame}
 
-\begin{frame}[fragile]
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
 \begin{multicols}{2}
-	\begin{tikzpicture}[thick,scale=0.75, every node/.style={transform shape}]
+	\begin{tikzpicture}[thick,scale=0.6, every node/.style={transform shape}]
 	\node[se] (start) {Start};
 	%\node[op, below=of div] (set) {$a=b,\ b=r$};
 	\node[cn, below=of start] (condon) {Knopf A gedrückt?};
-	\node[op, below=of condon] (cnt) {$cnt \leftarrow cnt + 1$};
-	\node[cn, below=of cnt] (condoff) {Knopf A gedrückt?};
+	\node[op, below=of condon] (z) {$z \leftarrow z + 1$};
+	\node[cn, below=of z] (condoff) {Knopf A gedrückt?};
 	%
 	\draw[->] (start) -- (condon) coordinate[midway] (startedge);
-	\draw[->] (condon) -- node[left] {Ja} (cnt);
-	\draw[->] (cnt) -- (condoff) coordinate[midway] (condonedge);
+	\draw[->] (condon) -- node[left] {Ja} (z);
+	\draw[->] (z) -- (condoff) coordinate[midway] (condonedge);
 	\draw[->] (condon) -- node[below] {Nein} ++(2.5,0) |- (startedge);
 	\draw[->] (condoff) -- node[below] {Ja} ++(2.5,0) |- (condonedge);
 	\draw[->] (condoff) -- node[below] {Nein} ++(-2.5,0) |- (startedge);
 	\end{tikzpicture}
-	\begin{tikzpicture}[thick,scale=0.75, every node/.style={transform shape}]
+	\begin{tikzpicture}[thick,scale=0.6, every node/.style={transform shape}]
 	\node[se] (start) {Start};
 	%\node[op, below=of div] (set) {$a=b,\ b=r$};
 	\node[cn, below=of start] (condon) {Knopf B gedrückt?};
-	\node[op, below=of condon] (cnt) {$cnt \leftarrow cnt - 1$};
-	\node[cn, below=of cnt] (condoff) {Knopf B gedrückt?};
+	\node[op, below=of condon] (z) {$z \leftarrow z - 1$};
+	\node[cn, below=of z] (condoff) {Knopf B gedrückt?};
 	%
 	\draw[->] (start) -- (condon) coordinate[midway] (startedge);
-	\draw[->] (condon) -- node[left] {Ja} (cnt);
-	\draw[->] (cnt) -- (condoff) coordinate[midway] (condonedge);
+	\draw[->] (condon) -- node[left] {Ja} (z);
+	\draw[->] (z) -- (condoff) coordinate[midway] (condonedge);
 	\draw[->] (condon) -- node[below] {Nein} ++(2.5,0) |- (startedge);
 	\draw[->] (condoff) -- node[below] {Ja} ++(2.5,0) |- (condonedge);
 	\draw[->] (condoff) -- node[below] {Nein} ++(-2.5,0) |- (startedge);
@@ -329,20 +329,20 @@
 
 
 \section{Lösungsansatz}
-\begin{frame}[fragile]
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
 \begin{multicols}{2}
-	\begin{tikzpicture}[thick,scale=0.75, every node/.style={transform shape}]
+	\begin{tikzpicture}[thick,scale=0.6, every node/.style={transform shape}]
 	\node[se] (start) {Start};
 	%\node[op, below=of div] (set) {$a=b,\ b=r$};
 	\node[cn, below=of start] (condonA) {Knopf A gedrückt?};
-	\node[op, below=of condonA] (cntA) {$cnt \leftarrow cnt + 1$};
-	\node[cn, below=of cntA] (condoffA) {Knopf A gedrückt?};
+	\node[op, below=of condonA] (zA) {$z \leftarrow z + 1$};
+	\node[cn, below=of zA] (condoffA) {Knopf A gedrückt?};
 	\node[sc, right=of condonA] (scA0) {$x=0$};
 	\node[sc, right=of condoffA] (scA1) {$x=1$};
 	%
 	\draw[->] (start) -- (condonA) coordinate[midway] (startedge);
-	\draw[->] (condonA) -- node[left] {Ja} (cntA);
-	\draw[->] (cntA) -- (condoffA) coordinate[midway] (condonedgeA);
+	\draw[->] (condonA) -- node[left] {Ja} (zA);
+	\draw[->] (zA) -- (condoffA) coordinate[midway] (condonedgeA);
 	\draw[->] (condonA) -- node[below] {Nein} (scA0);
 	\draw[->] (scA0) -- node[below] {} ++(0,2.0) |- (startedge);
 	\draw[->] (condoffA) -- node[below] {Ja} (scA1);
@@ -352,15 +352,15 @@
 	%\node[op, below=of div] (set) {$a=b,\ b=r$};
 	\node[right of=scA0, minimum width=1cm] (right) {};
 	\node[cn, right=of right] (condonB) {Knopf B gedrückt?};
-	\node[op, below=of condonB] (cntB) {$cnt \leftarrow cnt - 1$};
-	\node[cn, below=of cntB] (condoffB) {Knopf B gedrückt?};
+	\node[op, below=of condonB] (zB) {$z \leftarrow z - 1$};
+	\node[cn, below=of zB] (condoffB) {Knopf B gedrückt?};
 	\node[sc, right=of condonB] (scB0) {$y=0$};
 	\node[sc, right=of condoffB] (scB1) {$y=1$};
 	\node[sed, above=of condonB] (start) {Start};
 	%
 	\draw[->] (start) -- (condonB) coordinate[midway] (startedgeB);
-	\draw[->] (condonB) -- node[left] {Ja} (cntB);
-	\draw[->] (cntB) -- (condoffB) coordinate[midway] (condonedgeB);
+	\draw[->] (condonB) -- node[left] {Ja} (zB);
+	\draw[->] (zB) -- (condoffB) coordinate[midway] (condonedgeB);
 	\draw[->] (scB0) -- node[below] {}  ++(0,2.0) |- (startedgeB);
 	\draw[->] (condonB) -- node[below] {Nein}  (scB0);
 	\draw[->] (condoffB) -- node[below] {Ja}  (scB1);
@@ -371,8 +371,11 @@
 \end{frame}
 
 
-\begin{frame}[fragile]
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
 \textbf{Zustandsautomat}
+
+\vspace{0.2cm}
+
 \begin{tikzpicture}[auto, thick]
 \node[initial,state] (q0) {x=0};
 \path
@@ -380,17 +383,17 @@
 \node[state, below=of q0] (q1) {x=1};
 \path
 (q0) edge[->, bend left] node {Knopf gedrückt} (q1)
-(q1) edge[->, loop right] node[text width=3.5cm,align=left] {Knopf gedrückt/\\ $cnt \leftarrow cnt + 1$} ()
+(q1) edge[->, loop right] node[text width=3.5cm,align=left] {Knopf gedrückt/\\ $z \leftarrow z + 1$} ()
 (q1) edge[->, bend left] node {Knopf nicht gedrückt} (q0);
 \end{tikzpicture}
 \end{frame}
 
 
-\begin{frame}[fragile]
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
 
 \textbf{Zustandsautomat für Knopf A}
 
-\vspace{0.3cm}
+\vspace{0.2cm}
 
 \begin{tikzpicture}[auto, thick]
 \node[initial,state] (q0) {x=0};
@@ -399,15 +402,15 @@
 \node[state, below=of q0] (q1) {x=1};
 \path
 (q0) edge[->, bend left] node {Knopf A gedrückt} (q1)
-(q1) edge[->, loop right] node[text width=3.5cm,align=left] {Knopf A gedrückt/\\ $cnt \leftarrow cnt + 1$} ()
+(q1) edge[->, loop right] node[text width=3.5cm,align=left] {Knopf A gedrückt/\\ $z \leftarrow z + 1$} ()
 (q1) edge[->, bend left] node {Knopf A nicht gedrückt} (q0);
 \end{tikzpicture}
 
-\vspace{0.7cm}
+\vspace{0.4cm}
 
 \textbf{Zustandsautomat für Knopf B}
 
-\vspace{0.3cm}
+\vspace{0.2cm}
 
 \begin{tikzpicture}[auto, thick]
 \node[initial,state] (q0) {y=0};
@@ -416,7 +419,7 @@
 \node[state, below=of q0] (q1) {y=1};
 \path
 (q0) edge[->, bend left] node {Knopf B gedrückt} (q1)
-(q1) edge[->, loop right] node[text width=3.5cm,align=left] {Knopf B gedrückt/\\ $cnt \leftarrow cnt - 1$} ()
+(q1) edge[->, loop right] node[text width=3.5cm,align=left] {Knopf B gedrückt/\\ $z \leftarrow z - 1$} ()
 (q1) edge[->, bend left] node {Knopf B nicht gedrückt} (q0);
 \end{tikzpicture}
 
@@ -424,19 +427,19 @@
 \end{frame}
 
 \section{Lösung}
-\begin{frame}[fragile]
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
 \begin{multicols}{2}
 	\begin{tikzpicture}[thick,scale=0.75, every node/.style={transform shape}]
 	\node[se] (start) {Start};
 	\node[op, below=of start] (tmp) {$t \leftarrow \mathrm{Knopf}$};
 	\node[cn, below=of tmp] (condon) {$t > x?$};
-	\node[op, below=of condon] (cnt) {$cnt \leftarrow cnt + 1$};
-	\node[op, below=of cnt] (setx) {$x \leftarrow t$};
+	\node[op, below=of condon] (z) {$z \leftarrow z + 1$};
+	\node[op, below=of z] (setx) {$x \leftarrow t$};
 	%
 	\draw[->] (start) -- (tmp) coordinate[midway] (startedge);
 	\draw[->] (tmp) -- (condon);
-	\draw[->] (condon) -- node[left] {Ja} (cnt);
-	\draw[->] (cnt) -- (setx) coordinate[midway] (setxedge);
+	\draw[->] (condon) -- node[left] {Ja} (z);
+	\draw[->] (z) -- (setx) coordinate[midway] (setxedge);
 	\draw[->] (condon) -- node[below] {Nein} ++(2.5,0) |- (setxedge);
 	\draw[->] (setx) -- ++(-2.5,0) |- (startedge);
 	\end{tikzpicture}
@@ -444,37 +447,37 @@
 \end{multicols}
 \end{frame}
 
-\begin{frame}[fragile]
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
 \begin{multicols}{2}
-	\begin{tikzpicture}[thick,scale=0.62, every node/.style={transform shape}, node distance=4mm]
+	\begin{tikzpicture}[thick,scale=0.5, every node/.style={transform shape}, node distance=4mm]
 	\node[se] (start) {Start};
 	\node[op, below=of start] (tmpA) {$t \leftarrow \mathrm{KnopfA}$};
 
 	
 	\node[cn, below=of tmpA] (condonA) {$t > x?$};
-	\node[op, below=of condonA] (cntA) {$cnt \leftarrow cnt + 1$};
+	\node[op, below=of condonA] (zA) {$z \leftarrow z + 1$};
 	
-	\node[op, below=of cntA] (setx) {$x \leftarrow t$};
+	\node[op, below=of zA] (setx) {$x \leftarrow t$};
 	
 	\node[op, below=of setx] (tmpB) {$u \leftarrow \mathrm{KnopfB}$};
 	\node[cn, below=of tmpB] (condonB) {$u > y?$};
-	\node[op, below=of condonB] (cntB) {$cnt \leftarrow cnt - 1$};
+	\node[op, below=of condonB] (zB) {$z \leftarrow z - 1$};
 
-	\node[op, below=of cntB] (sety) {$y \leftarrow u$};
+	\node[op, below=of zB] (sety) {$y \leftarrow u$};
 	%
 	\draw[->] (start) -- (tmpA) coordinate[midway] (startedge);
 
 	
 	\draw[->] (tmpA) -- (condonA);
 	
-	\draw[->] (condonA) -- node[left] {Ja} (cntA);
-	\draw[->] (cntA) -- (setx) coordinate[midway] (setxedge);
+	\draw[->] (condonA) -- node[left] {Ja} (zA);
+	\draw[->] (zA) -- (setx) coordinate[midway] (setxedge);
 	\draw[->] (setx) -- (tmpB);
 	\draw[->] (condonA) -- node[below] {Nein} ++(2.5,0) |- (setxedge);
 	\draw[->] (tmpB) -- (condonB);
 
-	\draw[->] (condonB) -- node[left] {Ja} (cntB);
-	\draw[->] (cntB) -- (sety) coordinate[midway] (setyedge);
+	\draw[->] (condonB) -- node[left] {Ja} (zB);
+	\draw[->] (zB) -- (sety) coordinate[midway] (setyedge);
 	\draw[->] (condonB) -- node[below] {Nein} ++(2.5,0) |- (setyedge);
 
 	
@@ -484,22 +487,22 @@
 \end{multicols}
 \end{frame}
 
-\begin{frame}[fragile]
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
 \begin{multicols}{2}
-	\begin{tikzpicture}[thick,scale=0.62, every node/.style={transform shape}, node distance=4mm]
+	\begin{tikzpicture}[thick,scale=0.5, every node/.style={transform shape}, node distance=4mm]
 	\node[se] (start) {Start};
 	\node[op, below=of start] (tmpA) {$t \leftarrow \mathrm{KnopfA}$};
 	\node[op, below=of tmpA] (tmpB) {$u \leftarrow \mathrm{KnopfB}$};
 	
 	\node[cn, below=of tmpB] (condonA) {$t > x?$};
-	\node[op, below=of condonA] (cntA) {$cnt \leftarrow cnt + 1$};
+	\node[op, below=of condonA] (zA) {$z \leftarrow z + 1$};
 	
 
 	
-	\node[cn, below=of cntA] (condonB) {$u > y?$};
-	\node[op, below=of condonB] (cntB) {$cnt \leftarrow cnt - 1$};
+	\node[cn, below=of zA] (condonB) {$u > y?$};
+	\node[op, below=of condonB] (zB) {$z \leftarrow z - 1$};
 
-	\node[op, below=of cntB] (setx) {$x \leftarrow t$};	
+	\node[op, below=of zB] (setx) {$x \leftarrow t$};	
 	\node[op, below=of setx] (sety) {$y \leftarrow u$};
 	%
 	\draw[->] (start) -- (tmpA) coordinate[midway] (startedge);
@@ -507,15 +510,15 @@
 	
 	\draw[->] (tmpB) -- (condonA);
 	
-	\draw[->] (condonA) -- node[left] {Ja} (cntA);
-	\draw[->] (cntA) -- (condonB) coordinate[midway] (setxedge);
+	\draw[->] (condonA) -- node[left] {Ja} (zA);
+	\draw[->] (zA) -- (condonB) coordinate[midway] (setxedge);
 	\draw[->] (condonA) -- node[below] {Nein} ++(2.5,0) |- (setxedge);
 
 	
-	\draw[->] (cntA) -- (condonB);
-	\draw[->] (cntB) -- (setx) coordinate[midway] (setyedge);
+	\draw[->] (zA) -- (condonB);
+	\draw[->] (zB) -- (setx) coordinate[midway] (setyedge);
 	\draw[->] (condonB) -- node[below] {Nein} ++(2.5,0) |- (setyedge);
-	\draw[->] (condonB) -- node[left] {Ja} (cntB);
+	\draw[->] (condonB) -- node[left] {Ja} (zB);
 		
 	\draw[->] (setx) -- (sety);	
 	\draw[->] (sety) -- ++(-2.5,0) |- (startedge);
@@ -525,7 +528,7 @@
 \end{frame}
 
 
-\begin{frame}[fragile]
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
 \scalebox{0.9}{%
 \begin{minipage}{2\textwidth}
 	\begin{description}
