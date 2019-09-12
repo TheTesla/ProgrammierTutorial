@@ -46,6 +46,42 @@
 \section{Ausgangssituation}
 \begin{frame}[fragile]{\insertsection}{\insertsubsection}
 \begin{multicols}{2}
+	\begin{tikzpicture}[thick,scale=0.7, every node/.style={transform shape}]
+	\node[se] (start) {Start};
+	\node[op, below=of start, minimum width=5cm] (pl) {Programmieren lernen};
+	\node[op, below=of pl, minimum width=5cm] (ps) {Programm schreiben};
+	\node[cn, below=of ps, minimum height=2.7cm] (erfolg) {Erfolg?};
+	\node[cn, right=of erfolg, minimum height=2.7cm] (aufgeben) {Aufgeben?};
+	\node[se, below=of erfolg] (fertig) {Fertig};
+	\node[se, below=of aufgeben] (gescheitert) {Gescheitert};	
+	%
+	\draw[->] (start) -- (pl) coordinate[midway] (startedge);
+
+	\draw[->] (pl) -- (ps);
+	\draw[->] (ps) -- (erfolg);
+	\draw[->] (erfolg) -- node[right] {Ja} (fertig);
+	\draw[->] (erfolg) -- node[below] {Nein}  (aufgeben);
+	\draw[->] (aufgeben) -- node[right] {Ja} (gescheitert);
+	\draw[->] (aufgeben) -- node[below] {Nein} ++(2.5,0) |- (startedge);
+	\end{tikzpicture}
+	\begin{itemize}
+		\item Erlernen von Programmiersprachen
+		\item Anschauen von Tutorials, Beispielen
+		\item Beispielprogramme leicht umsetzbar
+		\item reale Lösung nicht umsetzbar
+	\end{itemize}
+
+\end{multicols}
+\end{frame}
+
+\begin{frame}
+	\tableofcontents
+\end{frame}
+
+
+\subsection{Anforderungsanalyse}
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
+\begin{multicols}{2}
 	\begin{tikzpicture}[thick]
 	\node[rectangle,draw=black,minimum width=0.8cm, minimum height=0.1cm] at (-0.5cm,2.125cm) {} ;
 	\node[rectangle,draw=black,minimum width=0.5cm, minimum height=0.5cm] at (-0.5cm,1.75cm) {} ;
@@ -69,7 +105,8 @@
 \end{multicols}
 \end{frame}
 
-\section{Problemstellung}
+\section{Problem}
+\subsection{Vermeintlicher Konflikt}
 \begin{frame}[fragile]{\insertsection}{\insertsubsection}
 \begin{multicols}{2}
 	\begin{tikzpicture}[thick,scale=1.2, every node/.style={transform shape}, node distance=2cm, minimum width=1cm]
@@ -105,6 +142,7 @@
 \end{frame}
 
 \section{Problemanalyse}
+\subsection{Nur Anforderung A}
 \begin{frame}[fragile]{\insertsection}{\insertsubsection}
 \begin{multicols}{2}
 	\begin{tikzpicture}[thick,scale=0.6, every node/.style={transform shape}]
@@ -350,6 +388,7 @@
 \end{multicols}
 \end{frame}
 
+\subsection{Beide Anforderung A und B}
 \begin{frame}[fragile]{\insertsection}{\insertsubsection}
 \begin{multicols}{2}
 	\begin{tikzpicture}[thick,scale=0.6, every node/.style={transform shape}]
@@ -389,6 +428,7 @@
 
 
 \section{Lösungsansatz}
+\subsection{Scheduling}
 \begin{frame}[fragile]{\insertsection}{\insertsubsection}
 \begin{multicols}{3}
 	\begin{tikzpicture}[thick,scale=0.6, every node/.style={transform shape}]
@@ -441,7 +481,7 @@
 \end{multicols}
 \end{frame}
 
-
+\subsection{Zustandsautomat}
 \begin{frame}[fragile]{\insertsection}{\insertsubsection}
 	\textbf{Zustandsautomat}
 	\vspace{0.2cm}
@@ -501,6 +541,7 @@
 \end{frame}
 
 \section{Lösung}
+\subsection{Zustandsvariablen}
 \begin{frame}[fragile]{\insertsection}{\insertsubsection}
 \begin{multicols}{2}
 	\begin{tikzpicture}[thick,scale=0.75, every node/.style={transform shape}]
