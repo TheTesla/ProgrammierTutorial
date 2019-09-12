@@ -153,9 +153,9 @@
 	\node[cn, below=of z] (condoff) {Knopf gedrückt?};
 	
 	%
-	\draw[->] (start) -- (condon) coordinate[midway] (startedge)
-	(condon) -- node[left] {Ja} (z)
-	(z) -- (condoff) coordinate[midway] (condonedge);
+	\draw[->] (start) -- (condon) coordinate[midway] (startedge);
+	\draw[->] (condon) -- node[left] {Ja} (z);
+	\draw[->] (z) -- (condoff) coordinate[midway] (condonedge);
 	\draw[->] (condon) -- node[below] {Nein} ++(2.5,0) |- (startedge);
 	\draw[->] (condoff) -- node[below] {Ja} ++(2.5,0) |- (condonedge);
 	\draw[->] (condoff) -- node[below] {Nein} ++(-2.5,0) |- (startedge);
@@ -292,7 +292,7 @@
 	}
 	\begin{itemize}
 	\item Zählvariable $z$ erhöht um 1
-	\item Beginn der Wartschleife bis Knopf losgelassen
+	\item Beginn der Warteschleife bis Knopf losgelassen
 	\end{itemize}
 
 \end{multicols}
@@ -322,7 +322,7 @@
 		\end{wave}
 	}
 	\begin{itemize}
-	\item Wartschleife bis Knopf losgelassen
+	\item Warteschleife bis Knopf losgelassen
 	\end{itemize}
 \end{multicols}
 \end{frame}
@@ -352,8 +352,8 @@
 	}
 	\begin{itemize}
 	\item Knopf losgelassen
-	\item Wartschleife wird verlassen
-	\item erneuter Aufruf der ersten Wartschleife
+	\item Warteschleife wird verlassen
+	\item erneuter Aufruf der ersten Warteschleife
 	\end{itemize}
 \end{multicols}
 \end{frame}
@@ -383,12 +383,12 @@
 	}
 	\begin{itemize}
 	\item Knopf nicht gedrückt
-	\item Wartschleife bis Knopf gedrückt
+	\item Warteschleife bis Knopf gedrückt
 	\end{itemize}
 \end{multicols}
 \end{frame}
 
-\subsection{Beide Anforderung A und B}
+\subsection{Beide Anforderungen A und B}
 \begin{frame}[fragile]{\insertsection}{\insertsubsection}
 \begin{multicols}{2}
 	\begin{tikzpicture}[thick,scale=0.6, every node/.style={transform shape}]
