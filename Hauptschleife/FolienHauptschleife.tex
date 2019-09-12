@@ -157,6 +157,10 @@
 			\nextwave{Zustand}  \ptr{0}{0} 
 		\end{wave}
 	}
+	\begin{itemize}
+		\item Knopf ist nicht gedrückt
+		\item Programmstart
+	\end{itemize}
 
 \end{multicols}
 \end{frame}
@@ -186,6 +190,10 @@
 			\nextwave{Zustand}  \ptr{0}{0.5} 
 		\end{wave}
 	}
+	\begin{itemize}
+	\item Knopf ist nicht gedrückt
+	\item Warteschleife solange Knopf nicht gedrückt ist
+	\end{itemize}
 \end{multicols}
 \end{frame}
 
@@ -212,6 +220,10 @@
 			\nextwave{Zustand}  \ptr{0}{1.0} 
 		\end{wave}
 	}
+	\begin{itemize}
+	\item Knopf ist gedrückt
+	\item Warteschleife wird verlassen
+	\end{itemize}
 \end{multicols}
 \end{frame}
 
@@ -239,6 +251,11 @@
 			\nextwave{Zustand}  \ptr{0}{1.2} 
 		\end{wave}
 	}
+	\begin{itemize}
+	\item Zählvariable $z$ erhöht um 1
+	\item Beginn der Wartschleife bis Knopf losgelassen
+	\end{itemize}
+
 \end{multicols}
 \end{frame}
 
@@ -265,6 +282,9 @@
 			\nextwave{Zustand}  \ptr{0}{1.4} 
 		\end{wave}
 	}
+	\begin{itemize}
+	\item Wartschleife bis Knopf losgelassen
+	\end{itemize}
 \end{multicols}
 \end{frame}
 
@@ -291,6 +311,11 @@
 			\nextwave{Zustand}  \ptr{0}{1.5} 
 		\end{wave}
 	}
+	\begin{itemize}
+	\item Knopf losgelassen
+	\item Wartschleife wird verlassen
+	\item erneuter Aufruf der ersten Wartschleife
+	\end{itemize}
 \end{multicols}
 \end{frame}
 
@@ -317,6 +342,10 @@
 			\nextwave{Zustand}  \ptr{0}{1.7} 
 		\end{wave}
 	}
+	\begin{itemize}
+	\item Knopf nicht gedrückt
+	\item Wartschleife bis Knopf gedrückt
+	\end{itemize}
 \end{multicols}
 \end{frame}
 
@@ -469,6 +498,11 @@
 	\draw[->] (condon) -- node[below] {Nein} ++(2.5,0) |- (setxedge);
 	\draw[->] (setx) -- ++(-2.5,0) |- (startedge);
 	\end{tikzpicture}
+	\begin{itemize}
+		\item Zustand von Programmablauf getrennt
+		\item Zustandsvariable $x$
+		\item nur eine Hauptschleife
+	\end{itemize}
 
 \end{multicols}
 \end{frame}
@@ -509,7 +543,19 @@
 	
 	\draw[->] (sety) -- ++(-2.5,0) |- (startedge);
 	\end{tikzpicture}
-	
+	\begin{itemize}
+		\item erfolgreiche Kombination beider Anforderungen
+		\item Zustand von Programmablauf getrennt
+		\item Zustandsvariablen 
+	\begin{itemize}
+		\item $x$ für Knopf~A
+		\item $y$ für Knopf~B
+	\end{itemize}
+		\item nur eine Hauptschleife
+	\begin{itemize}
+		\item nur ein Sprung zurück
+	\end{itemize}
+\end{itemize}	
 \end{multicols}
 \end{frame}
 
@@ -549,11 +595,16 @@
 	\draw[->] (setx) -- (sety);	
 	\draw[->] (sety) -- ++(-2.5,0) |- (startedge);
 	\end{tikzpicture}
-	
+	\begin{itemize}
+		\item Umsortieren nach EVA-Prinzip
+		\begin{itemize}
+			\item Wartbarkeit
+		\end{itemize}
+	\end{itemize}	
 \end{multicols}
 \end{frame}
 
-
+\section{Kontakt}
 \begin{frame}[fragile]{\insertsection}{\insertsubsection}
 \scalebox{0.9}{%
 \begin{minipage}{2\textwidth}
