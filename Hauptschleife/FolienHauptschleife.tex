@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[aspectratio=169]{beamer}
 %\documentclass{easytikz}
 
 
@@ -16,12 +16,13 @@
 \usepackage{setspace}
 
 
+
 \usetikzlibrary{shapes.geometric, arrows}
 \usetikzlibrary{positioning}
 
 
-\title{Programmierfallen \#1 -- unzulässige Kopplung}
-\subtitle{Kopplung von Zustand mit Programmablauf}
+\title{Programmierfallen -- unzulässige Kopplung}
+\subtitle{\#1 unzulässige Kopplung von Zustand mit Programmablauf}
 \author{Stefan Helmert}
 \institute{entroserv.de}
 \date{09/2019}
@@ -379,13 +380,17 @@
 	\draw[->] (condoff) -- node[below] {Ja} ++(2.5,0) |- (condonedge);
 	\draw[->] (condoff) -- node[below] {Nein} ++(-2.5,0) |- (startedge);
 	\end{tikzpicture}
+	\begin{itemize}
+		\item Flussdiagramm duplizieren?
+		\item aber Threads nicht erlaubt
+	\end{itemize}
 \end{multicols}
 \end{frame}
 
 
 \section{Lösungsansatz}
 \begin{frame}[fragile]{\insertsection}{\insertsubsection}
-\begin{multicols}{2}
+\begin{multicols}{3}
 	\begin{tikzpicture}[thick,scale=0.6, every node/.style={transform shape}]
 	\node[se] (start) {Start};
 	%\node[op, below=of div] (set) {$a=b,\ b=r$};
@@ -422,25 +427,39 @@
 	\draw[->] (scB1) -- node[below] {} ++(0,2) |- (condonedgeB);
 	\draw[->] (condoffB) -- node[below] {Nein} ++(-2.5,0) |- (startedgeB);
 	\end{tikzpicture}
+	\pagebreak
+	\begin{itemize}
+		\item implementiere Multithreading
+		\item definiere Schedulingpunkt
+		\item speichere Rücksprungpunkt
+		\item Nachteile
+		\begin{itemize}
+			\item komplex
+			\item fehleranfällig
+		\end{itemize}
+	\end{itemize}
 \end{multicols}
 \end{frame}
 
 
 \begin{frame}[fragile]{\insertsection}{\insertsubsection}
-\textbf{Zustandsautomat}
+	\textbf{Zustandsautomat}
+	\vspace{0.2cm}
+	\begin{tikzpicture}[auto, thick]
+	\node[initial,state] (q0) {x=0};
+	\path
+	(q0) edge[->, loop right] node {Knopf nicht gedrückt} ();
+	\node[state, below=of q0] (q1) {x=1};
+	\path
+	(q0) edge[->, bend left] node {Knopf gedrückt} (q1)
+	(q1) edge[->, loop right] node[text width=3.5cm,align=left] {Knopf gedrückt/\\ $z \leftarrow z + 1$} ()
+	(q1) edge[->, bend left] node {Knopf nicht gedrückt} (q0);
+	\end{tikzpicture}
+	\begin{itemize}
+		\item Betrachtung der Zustände
+		\item Befehlsabfolge zunächst irrelevant
+	\end{itemize}
 
-\vspace{0.2cm}
-
-\begin{tikzpicture}[auto, thick]
-\node[initial,state] (q0) {x=0};
-\path
-(q0) edge[->, loop right] node {Knopf nicht gedrückt} ();
-\node[state, below=of q0] (q1) {x=1};
-\path
-(q0) edge[->, bend left] node {Knopf gedrückt} (q1)
-(q1) edge[->, loop right] node[text width=3.5cm,align=left] {Knopf gedrückt/\\ $z \leftarrow z + 1$} ()
-(q1) edge[->, bend left] node {Knopf nicht gedrückt} (q0);
-\end{tikzpicture}
 \end{frame}
 
 
@@ -606,7 +625,7 @@
 
 \section{Kontakt}
 \begin{frame}[fragile]{\insertsection}{\insertsubsection}
-\scalebox{0.9}{%
+\scalebox{1.2}{%
 \begin{minipage}{2\textwidth}
 	\begin{description}
 		\item[Folien] \url{https://github.com/TheTesla/ProgrammierTutorial}
