@@ -44,6 +44,7 @@
 \frame{\titlepage}
 
 \section{Ausgangssituation}
+\subsection{Scheinbar nicht umsetzbar}
 \begin{frame}[fragile]{\insertsection}{\insertsubsection}
 \begin{multicols}{2}
 	\begin{tikzpicture}[thick,scale=0.7, every node/.style={transform shape}]
@@ -73,6 +74,43 @@
 
 \end{multicols}
 \end{frame}
+
+\section{Problem}
+\subsection{Vermeintlicher Konflikt}
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
+\begin{multicols}{2}
+	\begin{tikzpicture}[thick,scale=1.2, every node/.style={transform shape}, node distance=2cm, minimum width=1cm]
+	\node[circle, draw=black, fill=blue] (start) {}; 
+	\node[circle, draw=black, fill=green, right=of start] (A) {A};
+	\node[circle, draw=black, fill=green, below=of start] (B) {B};
+	\node[circle, draw=black, fill=red, below=of A] (AB) {AB};
+	
+	\draw[->] (start) -- (A);
+	\draw[->] (start) -- (B);
+	\draw[->,dotted] (start) -- (AB);
+	\draw[->] (start) .. controls (1,-5) and (2,-3.5) .. (AB);
+	\draw[line width=1mm] ($(start)!0.5!(AB)$) -- ++(2,0);
+	\draw[line width=1mm] ($(start)!0.5!(AB)$) -- ++(0,-2);
+	
+	\end{tikzpicture}
+	\begin{itemize}
+		\item Anforderung A
+		\begin{itemize}
+			\item unmittelbar umsetzbar
+		\end{itemize}
+		\item Anforderung B
+		\begin{itemize}
+			\item unmittelbar umsetzbar
+		\end{itemize}
+		\item Kombination aus A, B
+		\begin{itemize}
+			\item komplexe Lösung
+		\end{itemize}
+		
+	\end{itemize}
+\end{multicols}
+\end{frame}
+
 
 \begin{frame}
 	\tableofcontents
@@ -105,41 +143,6 @@
 \end{multicols}
 \end{frame}
 
-\section{Problem}
-\subsection{Vermeintlicher Konflikt}
-\begin{frame}[fragile]{\insertsection}{\insertsubsection}
-\begin{multicols}{2}
-	\begin{tikzpicture}[thick,scale=1.2, every node/.style={transform shape}, node distance=2cm, minimum width=1cm]
-		\node[circle, draw=black, fill=blue] (start) {}; 
-		\node[circle, draw=black, fill=green, right=of start] (A) {A};
-		\node[circle, draw=black, fill=green, below=of start] (B) {B};
-		\node[circle, draw=black, fill=red, below=of A] (AB) {AB};
-	
-		\draw[->] (start) -- (A);
-		\draw[->] (start) -- (B);
-		\draw[->,dotted] (start) -- (AB);
-		\draw[->] (start) .. controls (1,-5) and (2,-3.5) .. (AB);
-		\draw[line width=1mm] ($(start)!0.5!(AB)$) -- ++(2,0);
-		\draw[line width=1mm] ($(start)!0.5!(AB)$) -- ++(0,-2);
-
-	\end{tikzpicture}
-	\begin{itemize}
-		\item Anforderung A
-		\begin{itemize}
-			\item unmittelbar umsetzbar
-		\end{itemize}
-		\item Anforderung B
-		\begin{itemize}
-			\item unmittelbar umsetzbar
-		\end{itemize}
-		\item Kombination aus A, B
-		\begin{itemize}
-			\item komplexe Lösung
-		\end{itemize}
-
-	\end{itemize}
-\end{multicols}
-\end{frame}
 
 \section{Problemanalyse}
 \subsection{Nur Anforderung A}
