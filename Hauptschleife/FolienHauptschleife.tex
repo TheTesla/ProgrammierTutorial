@@ -494,8 +494,8 @@
 	(q0) edge[->, loop right] node {Knopf nicht gedrückt} ();
 	\node[state, below=of q0] (q1) {x=1};
 	\path
-	(q0) edge[->, bend left] node {Knopf gedrückt} (q1)
-	(q1) edge[->, loop right] node[text width=3.5cm,align=left] {Knopf gedrückt/\\ $z \leftarrow z + 1$} ()
+	(q0) edge[->, bend left] node[text width=3.5cm,align=left] {Knopf gedrückt/\\ $z \leftarrow z + 1$} (q1)
+	(q1) edge[->, loop right] node {Knopf gedrückt} ()
 	(q1) edge[->, bend left] node {Knopf nicht gedrückt} (q0);
 	\end{tikzpicture}
 	\begin{itemize}
@@ -518,8 +518,8 @@
 (q0) edge[->, loop right] node {Knopf A nicht gedrückt} ();
 \node[state, below=of q0] (q1) {x=1};
 \path
-(q0) edge[->, bend left] node {Knopf A gedrückt} (q1)
-(q1) edge[->, loop right] node[text width=3.5cm,align=left] {Knopf A gedrückt/\\ $z \leftarrow z + 1$} ()
+(q0) edge[->, bend left] node[text width=3.5cm,align=left] {Knopf A gedrückt/\\ $z \leftarrow z + 1$} (q1)
+(q1) edge[->, loop right] node {Knopf A gedrückt} ()
 (q1) edge[->, bend left] node {Knopf A nicht gedrückt} (q0);
 \end{tikzpicture}
 
@@ -535,8 +535,8 @@
 (q0) edge[->, loop right] node {Knopf B nicht gedrückt} ();
 \node[state, below=of q0] (q1) {y=1};
 \path
-(q0) edge[->, bend left] node {Knopf B gedrückt} (q1)
-(q1) edge[->, loop right] node[text width=3.5cm,align=left] {Knopf B gedrückt/\\ $z \leftarrow z - 1$} ()
+(q0) edge[->, bend left] node[text width=3.5cm,align=left] {Knopf B gedrückt/\\ $z \leftarrow z - 1$} (q1)
+(q1) edge[->, loop right] node {Knopf B gedrückt} ()
 (q1) edge[->, bend left] node {Knopf B nicht gedrückt} (q0);
 \end{tikzpicture}
 
