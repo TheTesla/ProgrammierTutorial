@@ -291,7 +291,7 @@
 \begin{multicols}{2}
 	\begin{enumerate}
 		\item CCA: Schlüsselpaar erzeugen
-		\item CCA: Root CSR erzeugen
+		\item CCA: Root CSR erzeugen (und pub~key anhängen)
 		\item CCA: Root Cert erzeugen (CSR selfsigning)
 		\item Root Cert CCA $\rightarrow$ Server
 		\item Client: Schlüsselpaar erzeugen
@@ -311,7 +311,28 @@
 
 
 
+\begin{frame}[fragile]{\insertsection}{\insertsubsection}
 
+\textbf{Intermediate Client Certificate}
+
+\begin{multicols}{2}
+	\begin{tikzpicture}[thick,scale=0.7, every node/.style={transform shape}]
+	\node[nd] (root) {Root Cert};
+	\node[nd, below=of root] (intermediate) {Intermediate Cert};
+	\node[nd, below=of intermediate] (client) {Client Cert};
+	\draw[->] (root) -- (intermediate);
+	\draw[->] (intermediate) --  (client);
+
+	
+	\end{tikzpicture}
+	\begin{itemize}
+		\item Vererbung von Rechten
+		\item keine Rechteerhöhung (Laufzeit beachten!)
+		\item übergeordneter Zertifikatsinhaber kann Gültigkeit entziehen!
+		\item 
+	\end{itemize}
+\end{multicols}
+\end{frame}
 
 
 \end{document}
